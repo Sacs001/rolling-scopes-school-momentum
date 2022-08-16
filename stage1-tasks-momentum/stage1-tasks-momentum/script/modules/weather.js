@@ -7,6 +7,7 @@ let wind = document.querySelector(".wind");
 let humidity = document.querySelector(".humidity");
 let weatherIcon = document.querySelector('.weather-icon');
 
+city.textContent = "Minsk";
 
 async function getWeather() {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=9989e58164052059117672bc4a4c7cd1&units=metric`;
@@ -24,3 +25,5 @@ getWeather()
 city.addEventListener('change', async () => {
     getWeather()
 });
+
+// export default weather.js

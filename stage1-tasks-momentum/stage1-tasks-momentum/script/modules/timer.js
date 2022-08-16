@@ -24,17 +24,19 @@ function getTimeOfDay() {
     else if (hours[0] > 18 && hours[0] <= 22) timeOfDay = "evening";
     else timeOfDay = "night";
 }
+function getTimeOfDayGreating() {
+    setInterval(() => {
+        timer();
+        getTimeOfDay();
+        timerText.textContent = currentTime;
+        timerDate.textContent = currentDate;
+        timerTimeOfDay.textContent = `Good ${timeOfDay}`;
 
+    }, 1000);
+}
 
-setInterval(() => {
-    timer();
-    getTimeOfDay();
-    timerText.textContent = currentTime;
-    timerDate.textContent = currentDate;
-    timerTimeOfDay.textContent = `Good ${timeOfDay}`;
+getTimeOfDayGreating()
 
-}, 1000);
-
-
+export let timeOfDayExport = timeOfDay;
 
 

@@ -1,15 +1,34 @@
-// Quotes ДОДЕЛАТЬ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-let quoyesBtn = document.querySelector(".change-quotes");
-let quotes = document.querySelector('.quote');
-let author = document.querySelector('.author');
+import { getRandomInt } from './sliderBg.js'
 
-async function getQuotes() {
-    const quotes = '../dataQuotes.json';
+
+async function getQuotes(lang) {
+
+    let quote = document.querySelector('.quote');
+    let author = document.querySelector('.author');
+    let dateQuotes = '';
+
+    const quotes = './script/dataQuotes.json';
     const res = await fetch(quotes);
-    let dateQuotes = await res.json();
-    return dateQuotes
+    dateQuotes = await res.json();
+
+    let randomQuote = '';
+    let randomAuthor = '';
+    let randomNum = getRandomInt(dateQuotes.rus.length);
+
+    if (lang == 'rus') {
+        randomQuote = dateQuotes.rus[randomNum].text;
+        randomAuthor = dateQuotes.rus[randomNum].author;
+    } else if (lang == 'en') {
+        randomQuote = dateQuotes.en[randomNum].text;
+        randomAuthor = dateQuotes.en[randomNum].author;
+    };
+
+    quote.textContent = randomQuote;
+    author.textContent = randomAuthor;
 };
 
-getQuotes();
+
+
+export default getQuotes
 

@@ -49,3 +49,6 @@ slideNext.addEventListener('click', () => {
         setBg(num)
     }
 })
+
+
+export { getRandomInt }
